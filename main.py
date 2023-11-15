@@ -1,4 +1,4 @@
-from MainWindow import App
+from main_window import App
 
 app = App()
 app.mainloop()

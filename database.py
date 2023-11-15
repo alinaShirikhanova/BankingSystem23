@@ -15,9 +15,10 @@ class Database:
         balance INTEGER
         );''')
 
-    def insert_account(self, account: BankAccount):
+    def insert_account(self, name, login, password):
         self.cursor.execute('INSERT INTO accounts(name, login, password, balance) values(?, ?, ?, ?)',
-                            (account.name, account.login, account.password, account.balance))
+                            (name, login, password, 0))
+        self.connection.commit()
 
 
 
