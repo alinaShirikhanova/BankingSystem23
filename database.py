@@ -20,5 +20,8 @@ class Database:
                             (name, login, password, 0))
         self.connection.commit()
 
+    def get_password_by_login(self, login):
+        self.cursor.execute('''SELECT password FROM accounts WHERE login = ?''', login)
+
 
 

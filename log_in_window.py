@@ -1,13 +1,16 @@
 from tkinter import *
 
+from database import Database
 
-class SignUpWindow(Toplevel):
+
+class LogInWindow(Toplevel):
     def __init__(self):
         super().__init__()
         self.title('Окно авторизации')
         self.geometry("300x300-800+300")
         self.login = StringVar()
         self.password = StringVar()
+        self.database = Database()
 
         self.notif = Label(self, font=("Calibri", 12))
         self.notif.grid(row=5, sticky=W)
@@ -20,10 +23,12 @@ class SignUpWindow(Toplevel):
         Entry(self, textvariable=self.password).grid(row=3, column=1)
 
 
-        Button(self, text="Sign Up", font=("Calibri", 12), width=15, command=self.log_in).grid(row=6, sticky=W)
+        Button(self, text="Log In", font=("Calibri", 12), width=15, command=self.log_in).grid(row=6, sticky=W)
 
     def log_in(self):
         self.notif.config(text='')
+        self.database.
+
         # self.name.get() ==  self.name.get().capitalize() - возвращает строку с первой заглавной и остальными маленькими
         c1 = self.check_name()
         c2 = self.check_login()

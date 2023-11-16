@@ -33,11 +33,11 @@ class SignUpWindow(Toplevel):
         self.notif.config(text='')
         # self.name.get() ==  self.name.get().capitalize() - возвращает строку с первой заглавной и остальными маленькими
 
-
         c3 = self.check_password()
         c2 = self.check_login()
         c1 = self.check_name()
         if c1 and c2 and c3:
+            self.notif.config(text='Вы успешно зарегистрировались', fg='green')
             self.database.insert_account(self.name.get(), self.login.get(), self.password1.get())
 
 
@@ -73,16 +73,20 @@ class SignUpWindow(Toplevel):
         return login_is_correct
 
     def check_password(self):
+        password_is_correct = True
         password1 = self.password1.get()
         password2 = self.password2.get()
 
         correct_len_password = len(password1) >= 8
 
         if password1 != password2:
+            password_is_correct = False
             self.notif.config(text='Пароли не совпадают', fg='red')
 
         if not correct_len_password:
+            password_is_correct = False
             self.notif.config(text='Неккоректная длина пароля', fg='red')
+        return password_is_correct
 
     def contains_forbidden_syms(self, line, forb_syms):
         for sym in line:
