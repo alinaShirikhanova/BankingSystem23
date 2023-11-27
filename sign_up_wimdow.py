@@ -4,8 +4,8 @@ from database import Database
 
 
 class SignUpWindow(Toplevel):
-    def __init__(self):
-        super().__init__()
+    def __init__(self, parent):
+        super().__init__(parent)
         self.title('Окно регистрации')
         self.geometry("300x300-800+300")
         self.name = StringVar()
